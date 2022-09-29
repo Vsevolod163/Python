@@ -1,4 +1,4 @@
-# Реализуйте алгоритм перемешивания списка.
+# Реализуйте алгоритм перемешивания списка. (сделал полное перемешивание всех эл списка)
 
 import random
 
@@ -20,9 +20,22 @@ def result_array(array):
     for i in range(len(array)):
         k = random.randint(0, len(array) - 1)
         
-        while check(index_array, k) == False:  
+        while check(index_array, k) == False or k == i:  
             k = random.randint(0, len(array) - 1)
+            if i == len(array) - 1 and k == i:
+                break
         index_array.append(k)
+    print(index_array)
+
+    for i in range(len(index_array)):
+        if i not in index_array:
+            index_array[- 1] = i
+
+    if index_array[-1] == len(index_array) - 1:
+
+        temp = index_array[-1]
+        index_array[-1] = index_array[-2]
+        index_array[-2] = temp
 
     for i in range(len(index_array)):
         x = index_array[i]
