@@ -62,3 +62,6 @@ print(f'Список: {array}')
 
 x = result_array(array)
 print(f'Перемешенный список: {x}')
+
+
+# index = random.choice(list) - берет рандомный эл из списка
