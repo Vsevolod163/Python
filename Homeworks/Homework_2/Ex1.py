@@ -38,12 +38,13 @@
 
 # print(summa)
 
-def float_to_completed_integer(real_number: float) -> int:
-    magnitude = int(1)
-    temp = float(real_number)
+def float_to_completed_integer(real_number):
+    magnitude = 1
+    temp = real_number
     while not temp.is_integer():
         magnitude *= 10
         temp = real_number * magnitude
+        print(temp)
     return int(temp)
 
 
@@ -56,4 +57,4 @@ def get_digits_sum(any_number):
         no_point_number //= 10
     return sum
 
-print (get_digits_sum(0.56))
+print (get_digits_sum(0.57))
