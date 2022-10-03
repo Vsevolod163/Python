@@ -8,11 +8,11 @@ def random1(n, min, max):
     list1 = []
     
     for i in range(1, n + 1):
+        l = len(str(max))
+        x = round(i * time.time() * 10 ** 10 % 10 ** l)
        
-        x = round(i * (time.time() * 1000) % (10 ** (len(str(max)) - 1)))
-        
         while x > max or x < min:
-            x = round(i * (time.time() * 10 ** len(str(max))) % (10 ** (len(str(max)))))
+            x = round(i * time.time() * 10 ** 10 % 10 ** l)
         
         if i % 2 == 0 and -x > min:
             list1.append(-x)
@@ -21,5 +21,5 @@ def random1(n, min, max):
     
     return list1
 
-result_list = random1(5, -500, 1000)
+result_list = random1(9, -200, 500)
 print(result_list)
