@@ -10,10 +10,8 @@
 
 from curses.ascii import isdigit
 
-
 path1 = '/Users/seva/Desktop/Учеба/Python/Homeworks/Homework_4/Ex5_file1'
 path2 = '/Users/seva/Desktop/Учеба/Python/Homeworks/Homework_4/Ex5_file2'
-
 
 with open(path1) as file1:
     
@@ -21,7 +19,6 @@ with open(path1) as file1:
         list1 = i.split(' ')
     # print(list1)
    
-
 with open(path2) as file2:
 
     for i in file2:
@@ -31,27 +28,40 @@ with open(path2) as file2:
 # Выводим строку с коэффициентами
 
 res1 = ''
-for i in range(0, len(list1), 2):
-    
-    for j in range(len(list1[i])):
-        if list1[i][0].isdigit() == False:
-            res1 += '1 '
-            break
-        if list1[i][j].isdigit():
-            res1 += list1[i][j]
-        else:
-            
-            res1 += ' '
-            break
+if list1[0] == '-':
+    for i in range(1, len(list1), 2):
+        for j in range(len(list1[i])):
+            if list1[i][0].isdigit() == False:
+                res1 += '1 '
+                break
+            if list1[i][j].isdigit():
+                res1 += list1[i][j]
+            else:
+                res1 += ' '
+                break
+else:
+    for i in range(0, len(list1), 2):
+        for j in range(len(list1[i])):
+            if list1[i][0].isdigit() == False:
+                res1 += '1 '
+                break
+            if list1[i][j].isdigit():
+                res1 += list1[i][j]
+            else:
+                res1 += ' '
+                break
     
 # print(res1)
 
 # Список знаков 1
 
 list_7 = []
-
-for i in range(1, len(list1) - 2, 2):
-    list_7.append(list1[i])
+if list1[0] == '-':
+    for i in range(0, len(list1) - 2, 2):
+        list_7.append(list1[i])
+else:
+    for i in range(1, len(list1) - 2, 2):
+        list_7.append(list1[i])
 
 # print(list_7)
 
@@ -73,30 +83,40 @@ for i in k:
     if i != '':
         new_list2.append(i)
 
-for i in range(len(list_7)):
-    if list_7[i] == '-':
-        new_list2[i + 1] = -int(new_list2[i + 1])
+# Записываем коэфы в список
+
+if list1[0] == '-':
+    for i in range(len(list_7)):
+        if list_7[i] == '-':
+            new_list2[i] = -int(new_list2[i])
+else:
+    for i in range(len(list_7)):
+        if list_7[i] == '-':
+            new_list2[i + 1] = -int(new_list2[i + 1])
         
 # print(new_list2)
 
 # Записываем степени в список
 
 new_list3 = []
-
 res2 = ''
 
-for i in range(0, len(list1), 2):
-    
-    for j in range(len(list1[i])):
-        
-        if list1[i][len(list1[i]) - j - 1].isdigit():
-            res2 = res2 + list1[i][len(list1[i]) - j - 1]
-            
-        else:
-            
-            res2 += ' '
-            break
-        
+if list1[0] == '-' or list1[0] == '+':
+    for i in range(1, len(list1), 2):
+        for j in range(len(list1[i])):  
+            if list1[i][len(list1[i]) - j - 1].isdigit():
+                res2 = res2 + list1[i][len(list1[i]) - j - 1]
+            else:
+                res2 += ' '
+                break
+else:
+    for i in range(0, len(list1), 2):
+        for j in range(len(list1[i])):
+            if list1[i][len(list1[i]) - j - 1].isdigit():
+                res2 = res2 + list1[i][len(list1[i]) - j - 1]
+            else:
+                res2 += ' '
+                break
 # print(res2)
 
 a3 = res2[0:-1]
@@ -129,25 +149,41 @@ print(d3)
 # Делаем для второго уравнения
 
 res3 = ''
-for i in range(len(list2)):
-    
-    for j in range(len(list2[i])):
-        if list2[i][0].isdigit() == False:
-            res1 += '1 '
-            break
-        if list2[i][j].isdigit():
-            res3 += list2[i][j]
-        else:
-            res3 += ' '
-            break
+
+if list2[0] == '-':
+    for i in range(1, len(list2), 2):
+        for j in range(len(list2[i])):
+            if list2[i][0].isdigit() == False:
+                res1 += '1 '
+                break
+            if list2[i][j].isdigit():
+                res3 += list2[i][j]
+            else:
+                res3 += ' '
+                break
+else:
+        for i in range(0, len(list2), 2):
+            for j in range(len(list2[i])):
+                if list2[i][0].isdigit() == False:
+                    res1 += '1 '
+                    break
+                if list2[i][j].isdigit():
+                    res3 += list2[i][j]
+                else:
+                    res3 += ' '
+                    break
 # print(res3)
 
 # Список знаков 2 
 
 list_8 = []
 
-for i in range(1, len(list2) - 2, 2):
-    list_8.append(list2[i])
+if list2[0] == '-':
+    for i in range(0, len(list2) - 2, 2):
+        list_8.append(list2[i])
+else:
+    for i in range(1, len(list2) - 2, 2):
+        list_8.append(list2[i])
 
 # print(list_8)
 # Выводим строку без лишних цифр
@@ -169,10 +205,14 @@ for i in k1:
     if i != '':
         new_list5.append(i)
 
-
-for i in range(len(list_8)):
-    if list_8[i] == '-':
-        new_list5[i + 1] = -int(new_list5[i + 1])
+if list2[0] == '-':
+    for i in range(len(list_8)):
+        if list_8[i] == '-':
+            new_list5[i] = -int(new_list5[i])
+else:
+    for i in range(len(list_8)):
+        if list_8[i] == '-':
+            new_list5[i + 1] = -int(new_list5[i + 1])
         
 # print(new_list5)
 
@@ -251,15 +291,24 @@ for key, value in sorted_dict2.items():
         k += f'+ x^{key} '
     elif value < 0:
         k += f'- {-value}x^{key} '
+    elif value < 0 and int(key) == 0:
+        k += f'- {-value} '
+    elif value > 0 and int(key) == 0:
+        k += f'+ {value} '
     else:
         k += f'+ {value}x^{key} '
-       
+        
 else:
     k += '= 0'
 
-print(k[2:]) 
+if k[0] == '-':
+    result1 = k
+    print(k)
+else:
+    result1 = k[2:]
+    print(result1) 
 
 path3 = '/Users/seva/Desktop/Учеба/Python/Homeworks/Homework_4/Ex5_resultfile'
 
 with open(path3, 'w') as list3:
-    list3.write(k[2:])
+    list3.write(result1)

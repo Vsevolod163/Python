@@ -38,6 +38,7 @@ x = list_uniq_el(N)
 print(x)
 
 
+# Через Множество
 
 # k = set()
 # for i in range(10):

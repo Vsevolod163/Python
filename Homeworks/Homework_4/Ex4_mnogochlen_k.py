@@ -46,15 +46,15 @@ def func(k):
     
     return res
 
+k = int(input('Введите натуральную степень k: '))
+result = func(k)
 
-x = func(5)
-
-print(x)
+print(result)
 
 path = '/Users/seva/Desktop/Учеба/Python/Homeworks/Homework_4/Ex4_file'
 
 with open(path, 'w') as file:
-    file.write(x)
+    file.write(result)
 
     
     
