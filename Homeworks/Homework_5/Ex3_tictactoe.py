@@ -24,9 +24,9 @@ def two_players(x):
     check = random.randint(1, 2)
 
     if check == 1:
-        print('Первыми ходят X')
+        print('\nПервыми ходит Игрок 1\n')
     else:
-        print('Первыми ходят O')
+        print('\nПервыми ходит Игрок 2\n')
 
     list_check = ''
 
@@ -131,9 +131,9 @@ def player_vs_bot(x):
     check = random.randint(1, 2)
 
     if check == 1:
-        print('Первым ходит игрок')
+        print('\nПервым ходит игрок\n')
     else:
-        print('Первым ходит Бот')
+        print('\nПервым ходит Бот\n')
 
     list_check = ''
 
@@ -203,12 +203,12 @@ x = \
 | 7 | 8 | 9 |
  -----------'''
 
-game_of_two = two_players(x)
-print(game_of_two)
+# game_of_two = two_players(x)
+# print(game_of_two)
 
 # game_of_bots = bot_vs_bot(x)
 # print(game_of_bots)
 
-# game_player_vs_bot = player_vs_bot(x)
-# print(game_player_vs_bot)
+game_player_vs_bot = player_vs_bot(x)
+print(game_player_vs_bot)
 
