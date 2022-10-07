@@ -29,6 +29,16 @@ def sjatie(list1):
     
     return rle_list
 
+def recovery(str2):
+    res2 = ''
+    res3 = ''
+    for i in range(len(str2)):
+        if str2[i].isdigit():
+            res2 += str2[i]
+        else:
+            res3 += str2[i] * int(res2)
+            res2 = ''
+    return res3
 
 def data_module(file1_list):
 
@@ -41,15 +51,16 @@ def data_module(file1_list):
                 rle_list += sjatie(file1_list[i]) + '\n'
         else:
             if i == len(file1_list) - 1:
-                x = 'Super!'
+                x = recovery(file1_list[i])
                 rle_list += x
             else:
-                x = 'Super!'
+                x = recovery(file1_list[i])
                 rle_list += x + '\n'
     
     return rle_list
 
 path1 = '/Users/seva/Desktop/Учеба/Python/Homeworks/Homework_5/ex2_data_file'
+path2 = '/Users/seva/Desktop/Учеба/Python/Homeworks/Homework_5/ex2_result_file'
 
 with open(path1) as file1:
     str1 = ''
@@ -63,14 +74,6 @@ print(file1_list)
 result = data_module(file1_list)
 print(result)
 
+with open(path2, 'w') as file2:
+    file2.write(result)
 
-str2 = '11a3b7c'
-
-res2 = ''
-for i in range(len(str2)):
-    if str2[i].isdigit():
-        res2 += str2[i]
-    else:
-        res2 += str2[i + 1] * int(res2)
-    
-print(res2)
