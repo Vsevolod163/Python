@@ -103,7 +103,11 @@ def bot_vs_bot(x):
                 count += 1
             else:
                 x[count] = 'X'
+                add_char(matrix_list, l, 'X')
+                checkable = check_lines_cols(matrix_list)
                 print(''.join(x))
+                if checkable == 1:
+                    return(f'Stop! Выиграл Бот {check}!')
                 count = 0 
         else:
             l = str(random.randint(1, 9))
@@ -115,10 +119,14 @@ def bot_vs_bot(x):
                 count += 1
             else:
                 x[count] = 'O'
+                add_char(matrix_list, l, 'O')
+                checkable = check_lines_cols(matrix_list)
                 print(''.join(x))
+                if checkable == 1:
+                    return(f'Stop! Выиграл Бот {check2}!')
                 count = 0
     
-    return 'Конец!'
+    return 'Ничья!'
 
 
 # -----------------------------------------------Игрок против бота----------------------------------------------------------
@@ -151,7 +159,11 @@ def player_vs_bot(x):
                     count += 1
                 else:
                     x[count] = 'X'
+                    add_char(matrix_list, l, 'X')
+                    checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
+                    if checkable == 1:
+                        return(f'Stop! Выиграл Игрок!')
                     count = 0
             else:
                 l = str(random.randint(1, 9))
@@ -163,9 +175,12 @@ def player_vs_bot(x):
                     count += 1
                 else:
                     x[count] = 'X'
+                    add_char(matrix_list, l, 'X')
+                    checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
+                    if checkable == 1:
+                        return(f'Stop! Выиграл Бот!')
                     count = 0
-
         else:
             if check == 1:
                 l = str(random.randint(1, 9))
@@ -177,9 +192,12 @@ def player_vs_bot(x):
                     count += 1
                 else:
                     x[count] = 'O'
+                    add_char(matrix_list, l, 'O')
+                    checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
+                    if checkable == 1:
+                        return(f'Stop! Выиграл Бот!')
                     count = 0
-                
             else:
                 l = str(input('Введите номер четверти(1 - 9): '))
                 while l in list_check or int(l) < 1 or int(l) > 9:
@@ -190,10 +208,14 @@ def player_vs_bot(x):
                     count += 1
                 else:
                     x[count] = 'O'
+                    add_char(matrix_list, l, 'O')
+                    checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
+                    if checkable == 1:
+                        return(f'Stop! Выиграл Игрок!')
                     count = 0
                 
-    return 'Конец!'
+    return 'Ничья!'
 
 # -------------------------------------------------------------------------------------------------------------------------
 
@@ -250,13 +272,13 @@ x = \
 matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 
 
-game_of_two = two_players(x)
-print(game_of_two)
+# game_of_two = two_players(x)
+# print(game_of_two)
 
 # game_of_bots = bot_vs_bot(x)
 # print(game_of_bots)
 
-# game_player_vs_bot = player_vs_bot(x)
-# print(game_player_vs_bot)
+game_player_vs_bot = player_vs_bot(x)
+print(game_player_vs_bot)
 
 
