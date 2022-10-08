@@ -30,6 +30,8 @@ def two_players(x):
 
     list_check = ''
 
+    print(''.join(x))
+
     for i in range(1, 10):
         if i % 2 != 0:
             l = str(input('Введите номер четверти(1 - 9): '))
@@ -44,7 +46,7 @@ def two_players(x):
                 add_char(matrix_list, l, 'X')
                 checkable = check_lines_cols(matrix_list)
                 print(''.join(x))
-                if checkable == 1:
+                if checkable > 0:
                     if check == 1:
                         return(f'Stop! Выиграл Игрок 1!')
                     else:
@@ -63,7 +65,7 @@ def two_players(x):
                 add_char(matrix_list, l, 'O')
                 checkable = check_lines_cols(matrix_list)
                 print(''.join(x))
-                if checkable == 1:
+                if checkable > 0:
                     if check == 1:
                         return(f'Stop! Выиграл Игрок 2!')
                     else: 
@@ -92,6 +94,9 @@ def bot_vs_bot(x):
         print('\nПервым ходит бот 2\n')
 
     list_check = ''
+
+    print(''.join(x))
+
     for i in range(1, 10):
         if i % 2 != 0:
             l = str(random.randint(1, 9))
@@ -106,7 +111,7 @@ def bot_vs_bot(x):
                 add_char(matrix_list, l, 'X')
                 checkable = check_lines_cols(matrix_list)
                 print(''.join(x))
-                if checkable == 1:
+                if checkable > 0:
                     return(f'Stop! Выиграл Бот {check}!')
                 count = 0 
         else:
@@ -122,7 +127,7 @@ def bot_vs_bot(x):
                 add_char(matrix_list, l, 'O')
                 checkable = check_lines_cols(matrix_list)
                 print(''.join(x))
-                if checkable == 1:
+                if checkable > 0:
                     return(f'Stop! Выиграл Бот {check2}!')
                 count = 0
     
@@ -141,11 +146,13 @@ def player_vs_bot(x):
     check = random.randint(1, 2)
 
     if check == 1:
-        print('\nПервым ходит игрок\n')
+        print('\nПервым ходит Игрок\n')
     else:
         print('\nПервым ходит Бот\n')
 
     list_check = ''
+
+    print(''.join(x))
 
     for i in range(1, 10):
         if i % 2 != 0: 
@@ -162,7 +169,7 @@ def player_vs_bot(x):
                     add_char(matrix_list, l, 'X')
                     checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
-                    if checkable == 1:
+                    if checkable > 0:
                         return(f'Stop! Выиграл Игрок!')
                     count = 0
             else:
@@ -178,7 +185,7 @@ def player_vs_bot(x):
                     add_char(matrix_list, l, 'X')
                     checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
-                    if checkable == 1:
+                    if checkable > 0:
                         return(f'Stop! Выиграл Бот!')
                     count = 0
         else:
@@ -195,7 +202,7 @@ def player_vs_bot(x):
                     add_char(matrix_list, l, 'O')
                     checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
-                    if checkable == 1:
+                    if checkable > 0:
                         return(f'Stop! Выиграл Бот!')
                     count = 0
             else:
@@ -211,7 +218,7 @@ def player_vs_bot(x):
                     add_char(matrix_list, l, 'O')
                     checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
-                    if checkable == 1:
+                    if checkable > 0:
                         return(f'Stop! Выиграл Игрок!')
                     count = 0
                 
