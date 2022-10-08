@@ -40,13 +40,12 @@ def two_players(x):
             while x[i].isdigit() == False and x[count] != l:
                 count += 1
             else:
-                if check == 1:
                     x[count] = 'X'
+                    add_char(matrix_list, l, 'X')
+                    checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
-                    count = 0
-                else:
-                    x[count] = '0'
-                    print(''.join(x))
+                    if checkable == 1:
+                        return('Stop!')
                     count = 0
         else:
             l = str(input('Введите номер четверти(1 - 9): '))
@@ -59,13 +58,13 @@ def two_players(x):
             else:
                 if check == 1:
                     x[count] = 'O'
+                    add_char(matrix_list, l, 'O')
+                    checkable = check_lines_cols(matrix_list)
                     print(''.join(x))
+                    if checkable == 1:
+                        return('Stop!')
                     count = 0
-                else:
-                    x[count] = 'X'
-                    print(''.join(x))
-                    count = 0
-
+    
     return 'Конец!'
 
 
@@ -100,8 +99,7 @@ def bot_vs_bot(x):
             else:
                 x[count] = 'X'
                 print(''.join(x))
-                count = 0
-               
+                count = 0 
         else:
             l = str(random.randint(1, 9))
             while l in list_check:
@@ -193,6 +191,43 @@ def player_vs_bot(x):
                 
     return 'Конец!'
 
+def add_char(matrix_list, num, char):
+
+    for i in range(len(matrix_list)):
+        for j in range(len(matrix_list[i])):
+            if matrix_list[i][j] == num:
+                matrix_list[i][j] = char
+
+    return matrix_list
+
+def check_lines_cols(matrix_list):
+
+    list_of_lines = []
+    list_of_col = []
+
+    for i in range(len(matrix_list)):
+        list_of_lines.append(matrix_list[i])
+        for j in range(len(matrix_list[i])):
+            list_of_col.append(matrix_list[j][i])
+
+    list_of_col_res = []
+    for i in range(3, len(list_of_col) + 1, 3):
+        list_of_col_res.append(list_of_col[i - 3:i])
+
+    count = 0
+   
+    for i in list_of_lines:
+        if len(set(i)) == 1:
+            count += 1
+            break
+
+    for j in list_of_col_res:
+        if len(set(j)) == 1:
+            count += 1
+            break
+    
+    return count
+
 
 x = \
 ''' -----------
@@ -203,12 +238,18 @@ x = \
 | 7 | 8 | 9 |
  -----------'''
 
-# game_of_two = two_players(x)
-# print(game_of_two)
+matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+
+
+game_of_two = two_players(x)
+print(game_of_two)
 
 # game_of_bots = bot_vs_bot(x)
 # print(game_of_bots)
 
-game_player_vs_bot = player_vs_bot(x)
-print(game_player_vs_bot)
+# game_player_vs_bot = player_vs_bot(x)
+# print(game_player_vs_bot)
 
+# matrix_list = [[0]*3]*3
+
+# print(matrix_list)
