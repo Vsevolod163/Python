@@ -10,6 +10,7 @@
 
 from curses.ascii import isdigit
 import random
+import time
 
 
 # ---------------------------------------------------2 игрока---------------------------------------------------------------
@@ -22,13 +23,11 @@ def two_players(x):
     check = random.randint(1, 2)
 
     if check == 1:
-        print('\nПервыми ходит Игрок 1\n')
+        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Игрок 1\n' + '\n' * 30)
     else:
-        print('\nПервыми ходит Игрок 2\n')
+        print('\n' * 30 + ''.join(x2) + '\n' + 'Первым ходит Игрок 2\n' + '\n' * 30)
 
     list_check = ''
-
-    print(''.join(x2))
 
     for i in range(1, 10):
         if i % 2 != 0:
@@ -62,14 +61,12 @@ def bot_vs_bot(x):
 
     if check == 1:
         check2 = 2
-        print('\nПервым ходит бот 1\n')
+        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Бот 1\n' + '\n' * 30)
     else:
         check2 = 1
-        print('\nПервым ходит бот 2\n')
+        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Бот 2\n' + '\n' * 30)
 
     list_check = ''
-
-    print(''.join(x2))
 
     for i in range(1, 10):
         if i % 2 != 0:
@@ -288,9 +285,9 @@ def player1_win_check(function1, function2, i, check, char, num, matrix, matrix2
         matrix2[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print('\n' * 20)
+        print('\n' * 30)
         print(''.join(matrix2))
-        print('\n' * 20)
+        print('\n' * 30) 
         if checkable > 0:
             if check == 1:
                 return(f'Stop! Выиграл Игрок 1!')
@@ -307,9 +304,9 @@ def player2_win_check(function1, function2, i, check, char, num, matrix, matrix2
         matrix2[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print('\n' * 20)
+        print('\n' * 30)
         print(''.join(matrix2))
-        print('\n' * 20)
+        print('\n' * 30)
         if checkable > 0:
             if check == 1:
                 return(f'Stop! Выиграл Игрок 2!')
@@ -319,17 +316,18 @@ def player2_win_check(function1, function2, i, check, char, num, matrix, matrix2
 
 def bot_win_check(function1, function2, i, check, char, num, matrix, matrix2, matrix_list, count):
 
-    print(f'Ход Бота {check}: {num}')
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
+        time.sleep(2)
         matrix2[count] = char
         matrix[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print('\n' * 20)
+        print('\n' * 30)
         print(''.join(matrix2))
-        print('\n' * 20)
+        print(f'Ход Бота {check}: {num}')
+        print('\n' * 30)
         if checkable > 0:
             return(f'Stop! Выиграл Бот {check}!')
         count = 0
@@ -489,8 +487,8 @@ matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 # game_of_two = two_players(x)
 # print(game_of_two)
 
-# game_of_bots = bot_vs_bot(x)
-# print(game_of_bots)
+game_of_bots = bot_vs_bot(x)
+print(game_of_bots)
 
-game_player_vs_bot = player_vs_bot(x)
-print(game_player_vs_bot)
+# game_player_vs_bot = player_vs_bot(x)
+# print(game_player_vs_bot)
