@@ -75,7 +75,7 @@ def bot_vs_bot(x):
         if i % 2 != 0:
             checkable = intelect_check_lines_cols_diag(matrix_list)
             if checkable > 0:
-                l = intelect_bot(matrix_list)
+                l = intelect_bot(matrix_list, 'X')
                 if l != 0:
                     list_check += str(l)
                     result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, matrix_list, count)
@@ -100,7 +100,7 @@ def bot_vs_bot(x):
         else:
             checkable = intelect_check_lines_cols_diag(matrix_list)
             if checkable > 0:
-                l = intelect_bot(matrix_list)
+                l = intelect_bot(matrix_list, 'O')
                 if l != 0:
                     list_check += str(l)
                     result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, matrix_list, count)
@@ -157,7 +157,7 @@ def player_vs_bot(x):
             else:
                 checkable = intelect_check_lines_cols_diag(matrix_list)
                 if checkable > 0:
-                    l = intelect_bot(matrix_list)
+                    l = intelect_bot(matrix_list, 'X')
                     if l != 0:
                         list_check += str(l)
                         print(f'Ход бота: {l}')
@@ -186,7 +186,7 @@ def player_vs_bot(x):
             if check == 1:
                 checkable = intelect_check_lines_cols_diag(matrix_list)
                 if checkable > 0:
-                    l = intelect_bot(matrix_list)
+                    l = intelect_bot(matrix_list, 'O')
                     if l != 0:
                         list_check += str(l)
                         print(f'Ход бота: {l}')
@@ -266,20 +266,20 @@ def create_list_of_diag(matrix_list):
     list_of_diagonal_res.append(list_of_diagonal[3:6])
 
     return list_of_diagonal_res
-    
-def intelect_bot(matrix_list):
+
+def intelect_bot(matrix_list, char):
 
     list_of_lines = create_list_of_lines(matrix_list)
     list_of_col_res = create_list_of_col(matrix_list)
     list_of_diagonal_res = create_list_of_diag(matrix_list)
     
-    temp = find_square(list_of_lines)
+    temp = find_square(list_of_lines, char)
     if temp != None:
         return temp
-    temp = find_square(list_of_col_res)
+    temp = find_square(list_of_col_res, char)
     if temp != None:
         return temp
-    temp = find_square(list_of_diagonal_res)
+    temp = find_square(list_of_diagonal_res, char)
     if temp != None:
         return temp
 
@@ -417,10 +417,10 @@ def check_lines_cols(matrix_list):
     
     return count
 
-def find_square(list):
+def find_square(list, char):
 
     for i in range(len(list)):
-        if len(set(list[i])) == 2:
+        if len(set(list[i])) == 2 and char in list[i]:
             if list[i][0] == list[i][1]:
                 if list[i][2].isdigit():
                     temp = list[i][2]
@@ -433,7 +433,21 @@ def find_square(list):
                 if list[i][0].isdigit():
                     temp = list[i][0]
                     return temp
-
+    else:
+        for i in range(len(list)):
+            if len(set(list[i])) == 2:
+                if list[i][0] == list[i][1]:
+                    if list[i][2].isdigit():
+                        temp = list[i][2]
+                        return temp
+                elif list[i][0] == list[i][2]:
+                    if list[i][1].isdigit():
+                        temp = list[i][1]
+                        return temp
+                elif list[i][1] == list[i][2]:
+                    if list[i][0].isdigit():
+                        temp = list[i][0]
+                        return temp
 
 # -------------------------------------------------Входные элементы----------------------------------------------------------
 
@@ -457,8 +471,8 @@ matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 # game_of_two = two_players(x)
 # print(game_of_two)
 
-# game_of_bots = bot_vs_bot(x)
-# print(game_of_bots)
+game_of_bots = bot_vs_bot(x)
+print(game_of_bots)
 
-game_player_vs_bot = player_vs_bot(x)
-print(game_player_vs_bot)
+# game_player_vs_bot = player_vs_bot(x)
+# print(game_player_vs_bot)
