@@ -202,6 +202,7 @@ def bot_vs_bot(x):
 
 # -----------------------------------------------Игрок против бота----------------------------------------------------------
 
+
 def player_vs_bot(x):
 
     x = list(x)
@@ -355,15 +356,14 @@ def player_vs_bot(x):
                 
     return 'Ничья!'
 
+
 # -------------------------------------------------------------------------------------------------------------------------
 def create_list_of_lines(matrix_list):
 
     list_of_lines = []
-    list_of_col = []
+
     for i in range(len(matrix_list)):
         list_of_lines.append(matrix_list[i])
-        for j in range(len(matrix_list[i])):
-            list_of_col.append(matrix_list[j][i])
 
     return list_of_lines
 
