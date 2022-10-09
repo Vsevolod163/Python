@@ -11,7 +11,9 @@
 
 import random
 
+
 # ------------------------------------------------------Бот против бота------------------------------------------------------
+
 
 def bot_vs_bot(count_of_candies):
 
@@ -46,7 +48,9 @@ def bot_vs_bot(count_of_candies):
                 print(f'Ход Бота {second_move}: {bot_number}, Количество конфет: {count_of_candies}')
                 count += 1
 
+
 # ------------------------------------------------------Игрок против бота------------------------------------------------------
+
 
 def player_vs_bot(count_of_candies):
 
@@ -59,7 +63,6 @@ def player_vs_bot(count_of_candies):
         print('Ходит Бот')
 
     count = 1
-    temp = count_of_candies
 
     while count_of_candies > 0:
         if count_of_candies <= 28:
@@ -101,7 +104,6 @@ def player_vs_bot(count_of_candies):
                     count_of_candies -= bot_number
                     print(f'Ход Бота {first_move}: {bot_number}, Количество конфет: {count_of_candies}')
                     count += 1
-
                 else:
                     bot_number = int(input('Сколько конфет Вы хотите взять?(1 - 28) '))
                     while bot_number < 1 or bot_number > 28:
