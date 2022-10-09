@@ -287,6 +287,7 @@ def player1_win_check(function1, function2, i, check, char, num, matrix, matrix2
         checkable = function2(matrix_list)
         print('\n' * 30)
         print(''.join(matrix2))
+        print(f'Ход Игрока: {num}')
         print('\n' * 30) 
         if checkable > 0:
             if check == 1:
@@ -306,6 +307,7 @@ def player2_win_check(function1, function2, i, check, char, num, matrix, matrix2
         checkable = function2(matrix_list)
         print('\n' * 30)
         print(''.join(matrix2))
+        print(f'Ход Игрока: {num}')
         print('\n' * 30)
         if checkable > 0:
             if check == 1:
@@ -343,12 +345,15 @@ def one_player_win_check(function1, function2, i, char, num, matrix, matrix2, ma
         checkable = function2(matrix_list)
         print('\n' * 30)
         print(''.join(matrix2))
+        print(f'Ход Игрока: {num}')
         print('\n' * 30)
         if checkable > 0:
             return(f'Stop! Выиграл Игрок!')
         count = 0
 
 def one_bot_win_check(function1, function2, i, char, num, matrix, matrix2, matrix_list, count):
+
+    time.sleep(2)
 
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
@@ -487,8 +492,8 @@ matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 # game_of_two = two_players(x)
 # print(game_of_two)
 
-game_of_bots = bot_vs_bot(x)
-print(game_of_bots)
+# game_of_bots = bot_vs_bot(x)
+# print(game_of_bots)
 
-# game_player_vs_bot = player_vs_bot(x)
-# print(game_player_vs_bot)
+game_player_vs_bot = player_vs_bot(x)
+print(game_player_vs_bot)
