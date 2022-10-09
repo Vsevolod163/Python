@@ -28,7 +28,7 @@ def two_players(x):
 
     list_check = ''
 
-    print(''.join(x))
+    print(''.join(x2))
 
     for i in range(1, 10):
         if i % 2 != 0:
@@ -36,7 +36,7 @@ def two_players(x):
             while l in list_check or int(l) < 1 or int(l) > 9:
                 l = str(input('\nЭта клетка уже занята или ее нет.\nВведите номер четверти(1 - 9): '))
             list_check += l
-            result = player1_win_check(add_char, check_lines_cols, i, check, 'X', l, x, matrix_list, count)
+            result = player1_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count)
             if result != None:
                 return result
         else:
@@ -44,7 +44,7 @@ def two_players(x):
             while l in list_check or int(l) < 1 or int(l) > 9:
                 l = str(input('\nЭта клетка уже занята или ее нет.\nВведите номер четверти(1 - 9): '))
             list_check += l
-            result = player2_win_check(add_char, check_lines_cols, i, check, 'O', l, x, matrix_list, count)
+            result = player2_win_check(add_char, check_lines_cols, i, check, 'O', l, x, x2, matrix_list, count)
             if result != None:
                 return result
 
@@ -69,7 +69,7 @@ def bot_vs_bot(x):
 
     list_check = ''
 
-    print(''.join(x))
+    print(''.join(x2))
 
     for i in range(1, 10):
         if i % 2 != 0:
@@ -78,7 +78,7 @@ def bot_vs_bot(x):
                 l = intelect_bot(matrix_list, 'X')
                 if l != 0:
                     list_check += str(l)
-                    result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, matrix_list, count)
+                    result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count)
                     if result != None:
                         return result
                 else:
@@ -86,7 +86,7 @@ def bot_vs_bot(x):
                     while l in list_check:
                         l = str(random.randint(1,9))
                     list_check += l
-                    result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, matrix_list, count)
+                    result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count)
                     if result != None:
                         return result
             else:
@@ -94,7 +94,7 @@ def bot_vs_bot(x):
                 while l in list_check:
                     l = str(random.randint(1,9))
                 list_check += l
-                result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, matrix_list, count)
+                result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count)
                 if result != None:
                     return result
         else:
@@ -103,7 +103,7 @@ def bot_vs_bot(x):
                 l = intelect_bot(matrix_list, 'O')
                 if l != 0:
                     list_check += str(l)
-                    result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, matrix_list, count)
+                    result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, x2, matrix_list, count)
                     if result != None:
                         return result
                 else:
@@ -111,7 +111,7 @@ def bot_vs_bot(x):
                     while l in list_check:
                         l = str(random.randint(1,9))
                     list_check += l
-                    result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, matrix_list, count)
+                    result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, x2, matrix_list, count)
                     if result != None:
                         return result
             else:
@@ -119,7 +119,7 @@ def bot_vs_bot(x):
                 while l in list_check:
                     l = str(random.randint(1,9))
                 list_check += l
-                result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, matrix_list, count)
+                result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, x2, matrix_list, count)
                 if result != None:
                     return result
     
@@ -142,7 +142,7 @@ def player_vs_bot(x):
 
     list_check = ''
 
-    print(''.join(x))
+    print(''.join(x2))
 
     for i in range(1, 10):
         if i % 2 != 0: 
@@ -151,7 +151,7 @@ def player_vs_bot(x):
                 while l in list_check or int(l) < 1 or int(l) > 9:
                     l = str(input('\nЭта клетка уже занята или ее нет.\nВведите номер четверти(1 - 9): '))
                 list_check += l
-                result = one_player_win_check(add_char, check_lines_cols, i, 'X', l, x, matrix_list, count)
+                result = one_player_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count)
                 if result != None:
                     return result
             else:
@@ -161,7 +161,7 @@ def player_vs_bot(x):
                     if l != 0:
                         list_check += str(l)
                         print(f'Ход бота: {l}')
-                        result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, matrix_list, count)
+                        result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count)
                         if result != None:
                             return result
                     else:
@@ -170,7 +170,7 @@ def player_vs_bot(x):
                             l = str(random.randint(1,9))
                         list_check += l
                         print(f'Ход бота: {l}')
-                        result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, matrix_list, count)
+                        result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count)
                         if result != None:
                             return result
                 else:
@@ -179,7 +179,7 @@ def player_vs_bot(x):
                         l = str(random.randint(1,9))
                     list_check += l
                     print(f'Ход бота: {l}')
-                    result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, matrix_list, count)
+                    result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count)
                     if result != None:
                         return result
         else:
@@ -190,7 +190,7 @@ def player_vs_bot(x):
                     if l != 0:
                         list_check += str(l)
                         print(f'Ход бота: {l}')
-                        result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, matrix_list, count)
+                        result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count)
                         if result != None:
                             return result
                     else:
@@ -199,7 +199,7 @@ def player_vs_bot(x):
                             l = str(random.randint(1,9))
                         list_check += l
                         print(f'Ход бота: {l}')
-                        result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, matrix_list, count)
+                        result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count)
                         if result != None:
                             return result
                 else:        
@@ -208,7 +208,7 @@ def player_vs_bot(x):
                         l = str(random.randint(1,9))
                     list_check += l
                     print(f'Ход бота: {l}')
-                    result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, matrix_list, count)
+                    result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count)
                     if result != None:
                         return result
             else:
@@ -216,7 +216,7 @@ def player_vs_bot(x):
                 while l in list_check or int(l) < 1 or int(l) > 9:
                     l = str(input('\nЭта клетка уже занята или ее нет.\nВведите номер четверти(1 - 9): '))
                 list_check += l
-                result = one_player_win_check(add_char, check_lines_cols, i, 'O', l, x, matrix_list, count)
+                result = one_player_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count)
                 if result != None:
                     return result
                 
@@ -286,15 +286,16 @@ def intelect_bot(matrix_list, char):
     if temp == None:
         return 0
 
-def player1_win_check(function1, function2, i, check, char, num, matrix, matrix_list, count):
+def player1_win_check(function1, function2, i, check, char, num, matrix, matrix2, matrix_list, count):
 
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
         matrix[count] = char
+        matrix2[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print(''.join(matrix))
+        print(''.join(matrix2))
         if checkable > 0:
             if check == 1:
                 return(f'Stop! Выиграл Игрок 1!')
@@ -302,15 +303,16 @@ def player1_win_check(function1, function2, i, check, char, num, matrix, matrix_
                 return(f'Stop! Выиграл Игрок 2!')
         count = 0
 
-def player2_win_check(function1, function2, i, check, char, num, matrix, matrix_list, count):
+def player2_win_check(function1, function2, i, check, char, num, matrix, matrix2, matrix_list, count):
 
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
         matrix[count] = char
+        matrix2[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print(''.join(matrix))
+        print(''.join(matrix2))
         if checkable > 0:
             if check == 1:
                 return(f'Stop! Выиграл Игрок 2!')
@@ -318,42 +320,45 @@ def player2_win_check(function1, function2, i, check, char, num, matrix, matrix_
                 return(f'Stop! Выиграл Игрок 1!')
         count = 0
 
-def bot_win_check(function1, function2, i, check, char, num, matrix, matrix_list, count):
+def bot_win_check(function1, function2, i, check, char, num, matrix, matrix2, matrix_list, count):
 
     print(f'Ход Бота {check}: {num}')
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
+        matrix2[count] = char
         matrix[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print(''.join(matrix))
+        print(''.join(matrix2))
         if checkable > 0:
             return(f'Stop! Выиграл Бот {check}!')
         count = 0
 
-def one_player_win_check(function1, function2, i, char, num, matrix, matrix_list, count):
+def one_player_win_check(function1, function2, i, char, num, matrix, matrix2, matrix_list, count):
 
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
         matrix[count] = char
+        matrix2[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print(''.join(matrix))
+        print(''.join(matrix2))
         if checkable > 0:
             return(f'Stop! Выиграл Игрок!')
         count = 0
 
-def one_bot_win_check(function1, function2, i, char, num, matrix, matrix_list, count):
+def one_bot_win_check(function1, function2, i, char, num, matrix, matrix2, matrix_list, count):
 
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
         matrix[count] = char
+        matrix2[count] = char
         function1(matrix_list, num, char)
         checkable = function2(matrix_list)
-        print(''.join(matrix))
+        print(''.join(matrix2))
         if checkable > 0:
             return(f'Stop! Выиграл Бот!')
         count = 0
@@ -461,6 +466,15 @@ x = \
 | 7 | 8 | 9 |
  -----------'''
 
+x2 = \
+''' -----------
+|   |   |   |
+|-----------|
+|   |   |   |
+|-----------|
+|   |   |   |
+ -----------'''
+x2 = list(x2)
 
 matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 
@@ -471,8 +485,8 @@ matrix_list = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
 # game_of_two = two_players(x)
 # print(game_of_two)
 
-game_of_bots = bot_vs_bot(x)
-print(game_of_bots)
+# game_of_bots = bot_vs_bot(x)
+# print(game_of_bots)
 
-# game_player_vs_bot = player_vs_bot(x)
-# print(game_player_vs_bot)
+game_player_vs_bot = player_vs_bot(x)
+print(game_player_vs_bot)
