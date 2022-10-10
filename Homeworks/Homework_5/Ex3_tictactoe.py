@@ -1,12 +1,5 @@
 # Создайте программу для игры в 'Крестики-нолики'.
 
-# ------------
-#  1 | 2 | 3 |
-# ------------
-#  4 | 5 | 6 |
-# ------------
-#  7 | 8 | 9 |
-# ------------ 
 
 from curses.ascii import isdigit
 import random
@@ -372,10 +365,11 @@ def player2_win_check(function1, function2, i, check, char, num, matrix, matrix2
 
 def bot_win_check(function1, function2, i, check, char, num, matrix, matrix2, matrix_list, count, size):
 
+    time.sleep(2)
+
     while matrix[i].isdigit() == False and matrix[count] != num:
         count += 1
     else:
-        time.sleep(2)
         matrix2[count] = char
         matrix[count] = char
         function1(matrix_list, num, char)
@@ -502,7 +496,7 @@ def find_square(list, char, size):
         for i in range(len(list)):
             for j in range(len(list[i])):
                 if len(set(list[i])) == 2:
-                    while count < size:
+                    while count <= size:
                         if list[i][j] != list[i][size - count] and list[i][size - count].isdigit():
                             temp = list[i][size - count]
                             return temp
@@ -530,8 +524,8 @@ x2 = list(x2)
 # game_of_two = two_players(x)
 # print(game_of_two)
 
-# game_of_bots = bot_vs_bot(x)
-# print(game_of_bots)
+game_of_bots = bot_vs_bot(x)
+print(game_of_bots)
 
-game_player_vs_bot = player_vs_bot(x)
-print(game_player_vs_bot)
+# game_player_vs_bot = player_vs_bot(x)
+# print(game_player_vs_bot)
