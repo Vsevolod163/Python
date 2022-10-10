@@ -492,6 +492,9 @@ def find_square(list, char, size):
                     if list[i][j] != list[i][size - count] and list[i][size - count].isdigit():
                         temp = list[i][size - count]
                         return temp
+                    elif list[i][j] != list[i][size - count] and list[i][j].isdigit():
+                        temp = list[i][j]
+                        return temp
                     else:
                         count += 1
     else:
@@ -502,6 +505,9 @@ def find_square(list, char, size):
                     while count < size:
                         if list[i][j] != list[i][size - count] and list[i][size - count].isdigit():
                             temp = list[i][size - count]
+                            return temp
+                        elif list[i][j] != list[i][size - count] and list[i][j].isdigit():
+                            temp = list[i][j]
                             return temp
                         else:
                             count += 1
@@ -529,42 +535,3 @@ x2 = list(x2)
 
 game_player_vs_bot = player_vs_bot(x)
 print(game_player_vs_bot)
-
-
-# test = [['X', '1', '3'], ['O', 'O', '9'], ['8', '9', '5']]
-# test2 = find_square(test, 'X', size_of_matrix)
-# print(test2)
-
-# def find_square(list, char):
-
-#     for i in range(len(list)):
-#         if len(set(list[i])) == 2 and char in list[i]:
-#             if list[i][0] == list[i][1]:
-#                 if list[i][2].isdigit():
-#                     temp = list[i][2]
-#                     return temp
-#             elif list[i][0] == list[i][2]:
-#                 if list[i][1].isdigit():
-#                     temp = list[i][1]
-#                     return temp
-#             elif list[i][1] == list[i][2]:
-#                 if list[i][0].isdigit():
-#                     temp = list[i][0]
-#                     return temp
-#     else:
-#         for i in range(len(list)):
-#             if len(set(list[i])) == 2:
-#                 if list[i][0] == list[i][1]:
-#                     if list[i][2].isdigit():
-#                         temp = list[i][2]
-#                         return temp
-#                 elif list[i][0] == list[i][2]:
-#                     if list[i][1].isdigit():
-#                         temp = list[i][1]
-#                         return temp
-#                 elif list[i][1] == list[i][2]:
-#                     if list[i][0].isdigit():
-#                         temp = list[i][0]
-#                         return temp
-
-
