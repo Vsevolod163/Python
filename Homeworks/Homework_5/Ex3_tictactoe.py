@@ -63,22 +63,12 @@ def bot_vs_bot(x):
 
     for i in range(1, size_of_matrix ** 2 + 1):
         if i % 2 != 0:
-            checkable = intelect_check_lines_cols_diag(matrix_list, size_of_matrix)
-            if checkable > 0:
-                l = intelect_bot(matrix_list, 'X', size_of_matrix)
-                if l != 0:
-                    list_check.append(str(l))
-                    result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count, size_of_matrix)
-                    if result != None:
-                        return result
-                else:
-                    l = str(random.randint(1, size_of_matrix ** 2))
-                    while l in list_check:
-                        l = str(random.randint(1, size_of_matrix ** 2))
-                    list_check.append(l)
-                    result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count, size_of_matrix)
-                    if result != None:
-                        return result
+            l = intelect_bot(matrix_list, 'X', 'O', size_of_matrix)
+            if l != 0:
+                list_check.append(str(l))
+                result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count, size_of_matrix)
+                if result != None:
+                    return result
             else:
                 l = str(random.randint(1, size_of_matrix ** 2))
                 while l in list_check:
@@ -86,24 +76,14 @@ def bot_vs_bot(x):
                 list_check.append(l)
                 result = bot_win_check(add_char, check_lines_cols, i, check, 'X', l, x, x2, matrix_list, count, size_of_matrix)
                 if result != None:
-                    return result
+                        return result
         else:
-            checkable = intelect_check_lines_cols_diag(matrix_list, size_of_matrix)
-            if checkable > 0:
-                l = intelect_bot(matrix_list, 'O', size_of_matrix)
-                if l != 0:
-                    list_check.append(str(l))
-                    result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, x2, matrix_list, count, size_of_matrix)
-                    if result != None:
-                        return result
-                else:
-                    l = str(random.randint(1, size_of_matrix ** 2))
-                    while l in list_check:
-                        l = str(random.randint(1, size_of_matrix ** 2))
-                    list_check.append(l)
-                    result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, x2, matrix_list, count, size_of_matrix)
-                    if result != None:
-                        return result
+            l = intelect_bot(matrix_list, 'O', 'X', size_of_matrix)
+            if l != 0:
+                list_check.append(str(l))
+                result = bot_win_check(add_char, check_lines_cols, i, check2, 'O', l, x, x2, matrix_list, count, size_of_matrix)
+                if result != None:
+                    return result
             else:
                 l = str(random.randint(1, size_of_matrix ** 2))
                 while l in list_check:
@@ -124,15 +104,11 @@ def player_vs_bot(x):
     x = list(x)
     count = 0
     check = random.randint(1, 2)
-    p = ''
-
     if check == 1:
         print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Игрок\n' + '\n' * 30)
     else:
         print('\n' * 30 + ''.join(x2) + '\n' + 'Первым ходит Бот\n' + '\n' * 30)
-
     list_check = []
-
     for i in range(1, size_of_matrix ** 2 + 1):
         if i % 2 != 0: 
             if check == 1:
@@ -144,9 +120,12 @@ def player_vs_bot(x):
                 if result != None:
                     return result
             else:
-                checkable = intelect_check_lines_cols_diag(matrix_list, size_of_matrix)
-                if checkable > 0:
-                    l = intelect_bot(matrix_list, 'X', size_of_matrix)
+                if i == 1 and size_of_matrix ** 2 % 2 != 0:
+                    l = str(int(size_of_matrix ** 2 / 2) + 1)
+                    list_check.append(l)
+                    one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count, size_of_matrix)
+                else:
+                    l = intelect_bot(matrix_list, 'X', 'O', size_of_matrix)
                     if l != 0:
                         list_check.append(str(l))
                         result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count, size_of_matrix)
@@ -160,19 +139,14 @@ def player_vs_bot(x):
                         result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count, size_of_matrix)
                         if result != None:
                             return result
-                else:
-                    l = str(random.randint(1, size_of_matrix ** 2))
-                    while l in list_check:
-                        l = str(random.randint(1, size_of_matrix ** 2))
-                    list_check.append(l)
-                    result = one_bot_win_check(add_char, check_lines_cols, i, 'X', l, x, x2, matrix_list, count, size_of_matrix)
-                    if result != None:
-                        return result
         else:
             if check == 1:
-                checkable = intelect_check_lines_cols_diag(matrix_list, size_of_matrix)
-                if checkable > 0:
-                    l = intelect_bot(matrix_list, 'O', size_of_matrix)
+                if matrix_list[int(size_of_matrix / 2)][int(size_of_matrix / 2)].isdigit() and size_of_matrix ** 2 % 2 != 0:
+                    l = l = str(int(size_of_matrix ** 2 / 2) + 1)
+                    list_check.append(l)
+                    one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
+                else:    
+                    l = intelect_bot(matrix_list, 'O', 'X', size_of_matrix)
                     if l != 0:
                         list_check.append(str(l))
                         result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
@@ -186,14 +160,6 @@ def player_vs_bot(x):
                         result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
                         if result != None:
                             return result
-                else:        
-                    l = str(random.randint(1, size_of_matrix ** 2))
-                    while l in list_check:
-                        l = str(random.randint(1, size_of_matrix ** 2))
-                    list_check.append(l)
-                    result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
-                    if result != None:
-                        return result
             else:
                 l = str(input(f'Введите номер четверти(1 - {size_of_matrix ** 2}): '))
                 while l in list_check or int(l) < 1 or int(l) > size_of_matrix ** 2:
@@ -304,7 +270,7 @@ def create_list_of_diag(matrix_list, size):
   
     return list_of_diagonals_res
 
-def intelect_bot(matrix_list, char, size):
+def intelect_bot(matrix_list, char, char2, size):
 
     list_of_lines = create_list_of_lines(matrix_list)
     list_of_col_res = create_list_of_col(matrix_list, size)
@@ -317,6 +283,15 @@ def intelect_bot(matrix_list, char, size):
     if temp != None:
         return temp
     temp = find_square(list_of_diagonal_res, char, size)
+    if temp != None:
+        return temp
+    temp = findsquare2(list_of_lines, char, char2, size)
+    if temp != None:
+        return temp
+    temp = findsquare2(list_of_col_res, char, char2, size)
+    if temp != None:
+        return temp
+    temp = findsquare2(list_of_diagonal_res, char, char2, size)
     if temp != None:
         return temp
 
@@ -417,31 +392,6 @@ def one_bot_win_check(function1, function2, i, char, num, matrix, matrix2, matri
         if checkable > 0:
             return(f'Stop! Выиграл Бот!')
         count = 0
-
-def intelect_check_lines_cols_diag(matrix_list, size):
-
-    list_of_lines = create_list_of_lines(matrix_list)
-    list_of_col_res = create_list_of_col(matrix_list, size)
-    list_of_diagonal_res = create_list_of_diag(matrix_list, size)
-    
-    count = 0
-   
-    for i in list_of_lines:
-        if len(set(i)) == 2:
-            count += 1
-            break
-
-    for j in list_of_col_res:
-        if len(set(j)) == 2:
-            count += 1
-            break
-    
-    for k in list_of_diagonal_res:
-        if len(set(k)) == 2:
-            count += 1
-            break     
-
-    return count
    
 def add_char(matrix_list, num, char):
 
@@ -481,6 +431,7 @@ def find_square(list, char, size):
     count = 1
     for i in range(len(list)):
         for j in range(len(list[i])):
+            count = 1
             if len(set(list[i])) == 2 and char in list[i]:
                 while count <= size:
                     if list[i][j] != list[i][size - count] and list[i][size - count].isdigit():
@@ -495,6 +446,7 @@ def find_square(list, char, size):
         count = 1
         for i in range(len(list)):
             for j in range(len(list[i])):
+                count = 1
                 if len(set(list[i])) == 2:
                     while count <= size:
                         if list[i][j] != list[i][size - count] and list[i][size - count].isdigit():
@@ -505,6 +457,17 @@ def find_square(list, char, size):
                             return temp
                         else:
                             count += 1
+
+def findsquare2(list, char, char2, size):
+    count = 1
+    for i in range(len(list)):
+        for count in range(1, len(list[i]) + 1):
+            if len(set(list[i])) > 2 and char in list[i] and char2 not in list[i]:
+                if list[i][size - count] != char and list[i][size - count].isdigit():
+                    temp = list[i][size - count]
+                    return temp
+                   
+                   
 
 # -------------------------------------------------Входные элементы----------------------------------------------------------
 
@@ -529,3 +492,4 @@ print(game_of_bots)
 
 # game_player_vs_bot = player_vs_bot(x)
 # print(game_player_vs_bot)
+
