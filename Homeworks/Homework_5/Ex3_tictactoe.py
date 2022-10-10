@@ -116,11 +116,14 @@ def player_vs_bot(x):
     count = 0
     check = random.randint(1, 2)
     bot_move_check = random.randint(1, 2)
-    print(bot_move_check)
-    if check == 1:
-        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Игрок\n' + '\n' * 30)
+    if bot_move_check == 1:
+        difficulty = 'Бот сильный!'
     else:
-        print('\n' * 30 + ''.join(x2) + '\n' + 'Первым ходит Бот\n' + '\n' * 30)
+        difficulty = 'Бот слабый!'
+    if check == 1:
+        print('\n' * 30  + ''.join(x2) + '\n' + difficulty + '\n' + 'Первым ходит Игрок\n' + '\n' * 30)
+    else:
+        print('\n' * 30 + ''.join(x2) + '\n' + difficulty + '\n' + 'Первым ходит Бот\n' + '\n' * 30)
     list_check = []
     for i in range(1, size_of_matrix ** 2 + 1):
         if i % 2 != 0: 
@@ -161,6 +164,21 @@ def player_vs_bot(x):
                         list_check.append(l)
                         one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
                         bot_move_check -= 1
+                    else:    
+                        l = intelect_bot(matrix_list, 'O', 'X', size_of_matrix)
+                        if l != 0:
+                            list_check.append(str(l))
+                            result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
+                            if result != None:
+                                return result
+                        else:
+                            l = str(random.randint(1, size_of_matrix ** 2))
+                            while l in list_check:
+                                l = str(random.randint(1, size_of_matrix ** 2))
+                            list_check.append(l)
+                            result = one_bot_win_check(add_char, check_lines_cols, i, 'O', l, x, x2, matrix_list, count, size_of_matrix)
+                            if result != None:
+                                return result
                 else:    
                     l = intelect_bot(matrix_list, 'O', 'X', size_of_matrix)
                     if l != 0:
@@ -508,4 +526,3 @@ x2 = list(x2)
 
 game_player_vs_bot = player_vs_bot(x)
 print(game_player_vs_bot)
-
