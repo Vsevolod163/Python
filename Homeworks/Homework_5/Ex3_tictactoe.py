@@ -52,12 +52,16 @@ def bot_vs_bot(x):
     count = 0
     check = random.randint(1, 2)
     bot_move_check = random.randint(1, 2)
+    if bot_move_check == 1:
+        difficulty = 'Он сильный!'
+    else:
+        difficulty = 'Он слабый!'
     if check == 1:
         check2 = 2
-        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Бот 1\n' + '\n' * 30)
+        print('\n' * 30  + ''.join(x2) + '\n'  + 'Первым ходит Бот 1\n' + difficulty + '\n' * 30)
     else:
         check2 = 1
-        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Бот 2\n' + '\n' * 30)
+        print('\n' * 30  + ''.join(x2) + '\n' + 'Первым ходит Бот 2\n' + difficulty + '\n' * 30)
 
     list_check = []
 
@@ -521,8 +525,8 @@ x2 = list(x2)
 # game_of_two = two_players(x)
 # print(game_of_two)
 
-# game_of_bots = bot_vs_bot(x)
-# print(game_of_bots)
+game_of_bots = bot_vs_bot(x)
+print(game_of_bots)
 
-game_player_vs_bot = player_vs_bot(x)
-print(game_player_vs_bot)
+# game_player_vs_bot = player_vs_bot(x)
+# print(game_player_vs_bot)
