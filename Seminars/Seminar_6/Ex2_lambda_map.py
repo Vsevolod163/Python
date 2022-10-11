@@ -20,3 +20,10 @@ for i in enumerate(myList1):
 
 myList = list(zip(myList1, myList2, myList3))
 print(myList)
+
+myList1 = [2, 5, 9]
+myList2 = [4, 2, 10]
+
+result = list(map(lambda x, y:x * y, myList1, myList2))
+print(result)
+
