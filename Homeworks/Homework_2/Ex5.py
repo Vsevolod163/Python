@@ -25,7 +25,6 @@ def result_array(array):
             if i == len(array) - 1 and k == i:
                 break
         index_array.append(k)
-    print(index_array)
 
     for i in range(len(index_array)):
         if i not in index_array:
