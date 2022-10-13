@@ -8,5 +8,4 @@ print(f'Сумма элементов на нечетных позициях = {
 
 a = list(enumerate(list1))
 
-res = sum([a[i][1] for i in range(len(a)) if i % 2 != 0])
-print(f'Сумма элементов на нечетных позициях через enumerate = {res}')
+print(f'Сумма элементов на нечетных позициях через enumerate = {sum([a[i][1] for i in range(len(a)) if i % 2 != 0])}')

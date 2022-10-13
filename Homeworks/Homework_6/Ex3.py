@@ -8,10 +8,11 @@ def summation(num):
 
 print(f'Через цикл: {summation(5)}')
 
-res = lambda num: [i for i in range(num + 1)]
-res2 = sum(list(res(5)))
-print(f'Через lambda: {res2}')
+res = (lambda num: [i for i in range(1, num + 1)])(5)
+print(f'Список элементов: {list(res)}')
+print(f'Через lambda: {sum(res)}')
 # Перевод элементов списка в строку и обратно в int
-res3 = list(map(str, res(5)))
-res3 = sum(list(map(int, res(5))))
-print(f'С использованием map: {res3}')
+res2 = list(map(str, res))
+print(f'Перевод элементов в str: {res2}')
+res2 = sum(list(map(int, res)))
+print(f'С использованием map: {res2}')

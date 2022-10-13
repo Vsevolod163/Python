@@ -9,5 +9,4 @@ print(f'Через цикл: {county(3, 5)}')
 
 # Через lambda and list comprehantions
 
-result = lambda x, size: [x + i for i in range(0, size * x, x)]
-print(f'Через lambda: {list(result(3, 5))}')
+print(f'Через lambda: {(lambda x, size: [x + i for i in range(0, size * x, x)])(3, 5)}')
