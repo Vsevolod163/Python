@@ -1,12 +1,29 @@
 
 from curses.ascii import isdigit
 
-a = '4 + 5 * 2 / 2 - 4'
-a = a.split()
-for i in range(len(a)):
-    if a[i].isdigit():
-        a[i] = int(a[i])
-print(a)
+b = '-  20 - 2 * 1 / 2'
+b = b.replace(' ', '')
+a = []
+i = 0
+while i < len(b):
+    res = ''
+    if i == 0 and b[i] == '-':
+        res += b[i]
+        i += 1
+    while b[i].isdigit():
+        if i == len(b) - 1:
+           res += b[i]
+           i += 1
+           a.append(int(res))
+           break
+        else:
+            res += b[i]
+            i += 1
+    else:
+        a.append(int(res))
+        a.append(b[i])
+        i += 1
+temp = ' '.join(map(str, a))
 for _ in range(len(a)):
     for i in range(len(a)):
         if '*' in a or '/' in a:
@@ -19,7 +36,7 @@ for _ in range(len(a)):
                     a[i - 1] = a[i - 1] / a[i + 1]
                     del a[i:i+2]
                     break
-        if '+' in a or '-' in a:
+        elif '+' in a or '-' in a:
             if a[i] == '+':
                 a[i - 1] = a[i - 1] + a[i + 1]
                 del a[i:i+2]
@@ -31,5 +48,5 @@ for _ in range(len(a)):
                     break
 
 a = ''.join(map(str, a))
-print(a)
+print(f'Результат уравнения: {temp} = {a}')
 
