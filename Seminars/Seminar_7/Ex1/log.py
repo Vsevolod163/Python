@@ -1,5 +1,4 @@
 from datetime import datetime
-from time import timezone
 
 path = '/Users/seva/Desktop/Учеба/Python/Seminars/Seminar_7/Ex1/log.txt'
 
