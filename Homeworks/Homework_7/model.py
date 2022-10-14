@@ -29,7 +29,7 @@ def string_to_list(b):
     return a
 
 def list_to_string(a):
-    a = ''.join(map(str, a))
+    a = ' '.join(map(str, a))
     return a
 
 def result(a):
