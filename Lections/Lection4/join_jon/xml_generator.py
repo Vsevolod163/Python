@@ -4,9 +4,8 @@ from user_interface import pressure_view
 
 path2 = '/Users/seva/Desktop/Учеба/Python/Lections/Lection4/join_jon/index.html'
 def create(device = 1):
-    style = 'style="font-size:30px;"'
-    html = '<html>\n <head></head>\n <body>\n'
-    html += '      <p {}>Temperature: {} c</p>\n'\
+    xml = '<xml>\n"'
+    html += '      <temperature units = "c">{}</temperature>\n'\
         .format(style, temperature_view(device))
     html += '      <p {}>Wind_speed: {} c</p>\n'\
         .format(style, wind_speed_view(device))
