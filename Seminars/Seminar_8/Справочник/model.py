@@ -1,10 +1,11 @@
 def open_file(path):
     with open(path) as file:
-        list1 = []
+        list1 = ''
         for i in file:
-            list1.append(i)
-    return list1
-
+            list1 += i
+        res = list1.split('\n')
+        print(res)
+    return res
 
 def add_contact(path, contact, file):
     file.append(contact)
@@ -19,7 +20,6 @@ def del_contact(path, contact, file):
             break
     with open(path, 'w') as file2:
         file2.write('Лист контактов')
-    print(file)
-    # for i in range(len(file)):
-    #     with open(path, 'a') as file2:
-    #         file2.write(f'\n{file[i]}')
+    with open(path, 'a') as file2:
+        for i in range(1, len(file)):
+            file2.write(f'\n{file[i]}')
