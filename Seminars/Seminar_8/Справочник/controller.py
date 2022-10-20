@@ -14,7 +14,7 @@ def button():
     do = view.what_to_do()
     if do == '1':
         res_string = model.open_file_string(path)
-        print(res_string)
+        view.print_result(res_string)
     elif do == '2':
         contact = view.input_contact()
         model.add_contact(path, contact, res_file)

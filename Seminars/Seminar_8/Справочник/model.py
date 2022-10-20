@@ -53,7 +53,7 @@ def del_contact(path, contact, file):
 def change_contact(path, contact, file):
     for i in range(len(file)):
         if contact in file[i]:
-            file[i] = input('Введите изменения: ')
+            file[i] = str.title(input('Введите изменения: '))
             break
     with open(path, 'w') as file2:
         file2.write('Лист контактов:\n')
